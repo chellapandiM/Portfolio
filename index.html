@@ -181,9 +181,13 @@
                     <p class="lead mb-4">Data Scientist & Analyst </p>
                     <div class="d-flex justify-content-center gap-3">
                         <a href="#contact" class="btn btn-light btn-lg px-4">Contact Me</a>
-                        <a href="https://drive.google.com/file/d/1HwTE8D-mStEP3GqJ4fokq_RBHJH9dFhM/view?usp=drive_link" target="_blank"class="download-btn btn-lg px-4" id="downloadResume">
-                            <i class="fas fa-download me-2"></i>Download Resume
-                        </a>
+                      <a href="https://drive.google.com/uc?export=download&id=1HwTE8D-mStEP3GqJ4fokq_RBHJH9dFhM" 
+   class="download-btn btn-lg px-4"
+   download="Chellapandi_M_Resume.pdf"
+   target="_blank"
+   rel="noopener noreferrer">
+    <i class="fas fa-download me-2"></i>Download Resume
+</a>
                     </div>
                 </div>
             </div>
@@ -449,14 +453,29 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Simple animation for download button
-        document.getElementById('downloadResume').addEventListener('click', function(e) {
+   <script>
+    document.getElementById('resumeDownload').addEventListener('click', function(e) {
+        // Optional: Add analytics tracking here
+        console.log('Resume download initiated');
+        
+        // For browsers that might block pop-ups
+        if(!this.getAttribute('download')) {
             e.preventDefault();
-            alert('Resume download will be available when you host this with your actual resume file.');
-            // In a real implementation, you would link to your actual resume PDF
-            // window.open('path-to-your-resume.pdf', '_blank');
+            window.open(this.href, '_blank');
+        }
+    });
+       // Using Google Analytics (if you have it)
+function trackResumeDownload() {
+    if(typeof gtag !== 'undefined') {
+        gtag('event', 'download', {
+            'event_category': 'Resume',
+            'event_label': 'PDF Download'
         });
-    </script>
+    }
+}
+
+document.getElementById('resumeDownload').addEventListener('click', trackResumeDownload);
+</script>
+
 </body>
 </html>
