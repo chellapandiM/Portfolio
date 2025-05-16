@@ -1,6 +1,6 @@
 # **Chellapandi M - Data Analyst Portfolio**  
 
-# **Chellapandi M - Portfolio : https://chellapandim.github.io/Portfolio/**  
+## **Chellapandi M - Portfolio : https://chellapandim.github.io/Portfolio/**  
 ## **📌 Overview**  
 This is a **professional portfolio website** for **Chellapandi M**, showcasing skills, projects, certifications, and experience as a **Data Analyst & Data Engineer**.  
 
