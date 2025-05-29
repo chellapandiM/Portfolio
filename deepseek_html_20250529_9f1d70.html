@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chellapandi M | Data Analyst</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --accent: #4cc9f0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.5s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .skill-badge:hover {
+            background-color: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .skill-category {
+            margin-bottom: 30px;
+        }
+        
+        .skill-category h4 {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+        }
+        
+        .certificate-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .certificate-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(67, 97, 238, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.4s;
+        }
+        
+        .certificate-card:hover .certificate-overlay {
+            opacity: 1;
+        }
+        
+        .btn-download {
+            background-color: var(--primary);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-download:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .language-progress {
+            height: 10px;
+            border-radius: 5px;
+            background-color: #e9ecef;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .resume-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">CHELLAPANDI M</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Download Button -->
+
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">CHELLAPANDI M</h1>
+                    <h2 class="mb-4 animate__animated animate__fadeInDown animate__delay-1s">Data Analyst</h2>
+                    <p class="lead mb-4 animate__animated animate__fadeInDown animate__delay-2s">Transforming raw data into actionable insights</p>
+                    <div class="d-flex gap-3 animate__animated animate__fadeInUp animate__delay-3s">
+                        <a href="#contact" class="btn btn-light btn-lg">Contact Me</a>
+                      
+                    </div>
+                    <div class="mt-4 d-flex justify-content-center justify-content-lg-start gap-3">
+                        <a href="https://www.linkedin.com/in/chellapandim" class="text-white" target="_blank">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
+                        <a href="https://github.com/chellapandiM" class="text-white" target="_blank">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-2 order-1 mb-4 mb-lg-0 text-center">
+                    <img src="https://via.placeholder.com/400x400?text=Profile+Photo" 
+                         alt="Chellapandi M" 
+                         class="profile-img floating animate__animated animate__fadeIn">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center section-title">About Me</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="card h-100 border-0">
+                        <div class="card-body">
+                            <h3 class="card-title">Professional Summary</h3>
+                            <p class="card-text">
+                                Recent Computer Science graduate with a strong interest in data analytics. Skilled in Python, Excel, Power BI, Tableau, and MySQL through academic projects and certifications. Passionate about turning data into meaningful insights to support decision-making. Quick learner with strong problem-solving and teamwork skills, eager to begin a career as a Data Analyst.
+                            </p>
+                            <div class="mt-4">
+                                <h5>Personal Details</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i> chellapandi24680@gmail.com</li>
+                                    <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> +91 6381117405</li>
+                                    <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-primary"></i> Madurai, Tamil Nadu, India</li>
+                                    <li class="mb-2">
+                                        <i class="fab fa-linkedin me-2 text-primary"></i> 
+                                        <a href="https://www.linkedin.com/in/chellapandim" target="_blank">linkedin.com/in/chellapandim</a>
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-github me-2 text-primary"></i> 
+                                        <a href="https://github.com/chellapandiM" target="_blank">github.com/chellapandiM</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="card h-100 border-0">
+                        <div class="card-body">
+                            <h3 class="card-title">Education</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <h5>B.E. Computer Science & Engineering</h5>
+                                    <p class="mb-1">Mohamed Sathak Engineering College, Kilakarai</p>
+                                    <p class="text-muted">2021 – 2025 | CGPA: 7.9/10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Skills</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-code me-2"></i>Programming</h4>
+                        <div>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Pandas</span>
+                            <span class="skill-badge">NumPy</span>
+                            <span class="skill-badge">scikit-learn</span>
+                            <span class="skill-badge">HTML5</span>
+                            <span class="skill-badge">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-database me-2"></i>Data Tools</h4>
+                        <div>
+                            <span class="skill-badge">Power BI</span>
+                            <span class="skill-badge">Tableau</span>
+                            <span class="skill-badge">MySQL</span>
+                            <span class="skill-badge">Excel</span>
+                            <span class="skill-badge">ETL</span>
+                            <span class="skill-badge">Data Cleaning</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-users me-2"></i>Soft Skills</h4>
+                        <div>
+                            <span class="skill-badge">Communication</span>
+                            <span class="skill-badge">Analytical Thinking</span>
+                            <span class="skill-badge">Teamwork</span>
+                            <span class="skill-badge">Presentation</span>
+                            <span class="skill-badge">Problem Solving</span>
+                            <span class="skill-badge">Data Storytelling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center section-title">Experience</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-briefcase fa-2x text-primary"></i>
+                                </div>
+                                <div class="flex-grow-1 ms-4">
+                                    <h4>Data Scientist Intern</h4>
+                                    <h5 class="text-primary">Pantech eLearning, Chennai</h5>
+                                    <p class="text-muted">July 2024 - August 2024</p>
+                                    <ul>
+                                        <li>Performed data preprocessing, analysis, and visualization using Python (pandas, matplotlib, seaborn) and BI tools like Tableau and Power BI</li>
+                                        <li>Built and evaluated machine learning models for classification tasks using scikit-learn to support data-driven decision-making</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Projects</h2>
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up">
+                    <div class="card project-card h-100">
+                        <img src="https://via.placeholder.com/600x400?text=Tax+Evasion" class="card-img-top project-img" alt="Tax Evasion Detection">
+                        <div class="card-body">
+                            <h5 class="card-title">Tax Evasion Detection</h5>
+                            <p class="card-text">Built a PU-learning-based ML model to detect illegal financial transactions using real-world tax data.</p>
+                            <div class="d-flex flex-wrap">
+                                <span class="badge bg-primary me-2 mb-2">Python</span>
+                                <span class="badge bg-primary me-2 mb-2">Machine Learning</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <small class="text-muted">Mohamed Sathak Engineering College | Apr 2025</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card project-card h-100">
+                        <img src="https://via.placeholder.com/600x400?text=Smart+Lighting" class="card-img-top project-img" alt="Smart Urban Lighting">
+                        <div class="card-body">
+                            <h5 class="card-title">Smart Urban Lighting</h5>
+                            <p class="card-text">Developed an IoT-based lighting system to optimize energy use based on motion and light sensors.</p>
+                            <div class="d-flex flex-wrap">
+                                <span class="badge bg-primary me-2 mb-2">IoT</span>
+                                <span class="badge bg-primary me-2 mb-2">Data Analysis</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <small class="text-muted">EDII Hackathon | Aug 2024</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card project-card h-100">
+                        <img src="https://via.placeholder.com/600x400?text=Investor+Dashboard" class="card-img-top project-img" alt="Investor Trends Dashboard">
+                        <div class="card-body">
+                            <h5 class="card-title">Investor Trends Dashboard</h5>
+                            <p class="card-text">Created a dynamic dashboard to visualize investor behavior and market trends.</p>
+                            <div class="d-flex flex-wrap">
+                                <span class="badge bg-primary me-2 mb-2">Power BI</span>
+                                <span class="badge bg-primary me-2 mb-2">Data Visualization</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <small class="text-muted">Cognifyz Technologies | Oct 2024</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card project-card h-100">
+                        <img src="https://via.placeholder.com/600x400?text=Amazon+Sales" class="card-img-top project-img" alt="Amazon Sales Report">
+                        <div class="card-body">
+                            <h5 class="card-title">Amazon Sales Report</h5>
+                            <p class="card-text">Designed a Power BI report to analyze sales performance, revenue, and product metrics.</p>
+                            <div class="d-flex flex-wrap">
+                                <span class="badge bg-primary me-2 mb-2">Power BI</span>
+                                <span class="badge bg-primary me-2 mb-2">Excel</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <small class="text-muted">InnoByte Services | Dec 2024</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center section-title">Certifications</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="flip-left">
+                    <div class="card certificate-card h-100">
+                        <img src="https://via.placeholder.com/600x400?text=Python+Cert" class="card-img-top" alt="Python Certification">
+                        <div class="certificate-overlay">
+                            <h5>Python Zero to Hero</h5>
+                            <p>GUVI | May 2025</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card certificate-card h-100">
+                        <img src="https://via.placeholder.com/600x400?text=Power+BI" class="card-img-top" alt="Power BI Certification">
+                        <div class="certificate-overlay">
+                            <h5>Power BI Certification</h5>
+                            <p>Simplilearn | Sep 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card certificate-card h-100">
+                        <img src="https://via.placeholder.com/600x400?text=TCS+NQT" class="card-img-top" alt="TCS NQT Certification">
+                        <div class="certificate-overlay">
+                            <h5>TCS iON NQT</h5>
+                            <p>TCS | Dec 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light py-5" id="interests">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Area of Interest</h2>
+            <div class="d-flex flex-wrap justify-content-center">
+                <span class="skill-badge m-2"><i class="fas fa-database me-2"></i>Data Engineer</span>
+                <span class="skill-badge m-2"><i class="fas fa-chart-bar me-2"></i>Data Analyst</span>
+                <span class="skill-badge m-2"><i class="fab fa-python me-2"></i>Python</span>
+                <span class="skill-badge m-2"><i class="fas fa-database me-2"></i>MySQL</span>
+                <span class="skill-badge m-2"><i class="fas fa-chart-pie me-2"></i>Power BI</span>
+                <span class="skill-badge m-2"><i class="fas fa-exchange-alt me-2"></i>ETL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Contact</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <h3 class="mb-4">Get In Touch</h3>
+                            <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-4">
+                                <div>
+                                    <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+                                    <p>chellapandi24680@gmail.com</p>
+                                </div>
+                                <div>
+                                    <i class="fas fa-phone fa-2x text-primary mb-3"></i>
+                                    <p>+91 6381117405</p>
+                                </div>
+                                <div>
+                                    <i class="fas fa-map-marker-alt fa-2x text-primary mb-3"></i>
+                                    <p>Madurai, Tamil Nadu</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center mt-4">
+                                <a href="https://www.linkedin.com/in/chellapandim" class="social-icon" target="_blank">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/chellapandiM" class="social-icon" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://chellapandim.github.io/Portfolio/" class="social-icon" target="_blank">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <h5>CHELLAPANDI M</h5>
+                    <p>Data Analyst</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                 <!-- In your HTML file -->
+<a href="https://drive.google.com/uc?export=download&id=1EHcYw1z96j8DgUAzlPPE9SgAeL5OPiaJ" 
+   class="btn btn-download" 
+   download="ChellapandiM_Resume.pdf">
+   <i class="fas fa-download me-2"></i>Download Resume
+</a>
+                </div>
+            </div>
+            <hr class="my-4 bg-light opacity-25">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Chellapandi M. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
